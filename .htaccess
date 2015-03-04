@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+	RewriteCond %{REQUEST_URI} !(\.jpg|\.css|\.js|\.mp3|\.png)$|api [NC]
+        # voer geen wijzigingen uit op over aafbeldingen, js bestanden en de api
+	RewriteEngine On
+	RewriteRule ^(?!index\.php).* index.php?url=$0 [L]
+        # stuur alle andere verzoeken door naar index.php
+</IfModule>

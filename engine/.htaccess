@@ -1,0 +1,6 @@
+order deny,allow
+allow from 127.0.0.1    #ipv4
+allow from ::1          #ipv6
+deny from all
+
+# dit zorgt er voor dat de engine map niet bezocht kan worden door externe ip's
