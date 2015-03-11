@@ -38,7 +38,7 @@ class user{
 		if($salt != null && $this->hashedpass === hash('sha512',$salt.$pass)){
                         if($this->verified){
                             $_SESSION['user']['name'] = $name;
-                            $return['type'] = 'succes';
+                            $return['type'] = 'success';
                             $return['mess'] = 'logged in';
                             return $return;
                         }

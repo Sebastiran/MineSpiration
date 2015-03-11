@@ -1,4 +1,6 @@
-sessionValid(function(){window.location = "profile"});
+sessionValid(function(){
+    $.mobile.changePage( "home.html");
+});
 $(document).ready(function(){
     $('#loginform').submit(function(event){
         $.ajax({
@@ -7,8 +9,8 @@ $(document).ready(function(){
             data: $("#loginform").serialize(),
             dataType: "json",
             success: function(data){
-                if(data['type'] == 'succces'){
-                    window.location('profile');
+                if(data['type'] == 'success'){
+                    $.mobile.changePage( "profile.html");
                 }
                 else{
                     //@todo proper handling handling
