@@ -2,26 +2,23 @@
 <html>
     <head>
         <title>Minespiration</title>
-        <base href="http://mine.sygnal.nl">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="stylesheet" href="public/css/mytheme.css" />
         <!--link rel="stylesheet" href="public/themes/jquery.mobile.icons.min.css" /-->
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
         
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script>
-            $( document ).on( "mobileinit", function() {
-                $.extend( $.mobile , {
-                    dynamicBaseEnabled: true
-                });
-            });
+            $('base').attr('href','http://localhost/minespiration/'); 
+            //houdt relatieve urls mogelijk. bijwerken voor uploaden
         </script>
+        <link rel="stylesheet" href="public/css/mytheme.css" />
     </head>
     <body>
         <div data-role="page" id="home" data-theme="d">
             <header data-role="header">
+                <a href="home" rel="external" data-iconpos="notext" data-icon="home" data-transition="slide">Home</a>
                 <h1>Minespiration</h1>
-                <a href="post" rel="external" data-icon="grid" data-transition="slide">Post your own!</a>
             </header>
+            <div data-role="content">
