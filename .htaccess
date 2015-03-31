@@ -1,3 +1,8 @@
+#PANIEKFUNCTIE
+#order deny,allow
+#allow from 86.82.211.47
+#deny from all
+
 <IfModule mod_rewrite.c>
 	RewriteCond %{REQUEST_URI} !(\.jpg|\.css|\.js|\.mp3|\.png)$|api [NC]
         # voer geen wijzigingen uit op over aafbeldingen, js bestanden en de api
