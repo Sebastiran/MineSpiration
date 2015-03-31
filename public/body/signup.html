@@ -1,0 +1,47 @@
+<form id="singupform">
+    <div data-role="fieldcontain">
+        <label for="e">email (required)</label>
+        <input required name="e" id="e" type="text" placeholder="john@minespiration.net">
+    </div>
+    <div data-role="fieldcontain">
+        <label for="n">account name (required)</label>
+        <input required name="n" id="n" type="text" placeholder="JohnDoe15">
+    </div>
+    <div data-role="fieldcontain">
+        <label for="p1">password (required)</label>
+        <input required name="p1" id="p1" type="password" onkeyup="checkpass(this);" placeholder="My_d0G1E_c4rl">
+    </div>
+    <div data-role="fieldcontain">
+        <label for="p2">repeat password (required)</label>
+        <input required name="p2" id="p2" type="password" onkeyup="comparepass(this)" placeholder="My_d0G1E_c4rl">
+    </div>
+    <div data-role="fieldcontain">
+        <label for="a">date of birth</label>
+        <input name="a" id="a" type="date" placeholder="yyyy/mm/dd">
+    </div>
+    <div data-role="fieldcontain">
+        <label for="g">minecraft name</label>
+        <input name="g" id="g" type="text" placeholder="game-name">
+    </div>
+    <div data-role="fieldcontain">
+        <label for="c">country</label>
+        <input name="c" id="c" type="text" placeholder="country">
+    </div>
+    <div data-role="fieldcontain">
+            <label for="s">gender</label>
+            <select name="s" id="s">
+                <option value="u">Prefer not to say</option>
+                <option value="m">Male</option>
+                <option value="f">Female</option>
+                <option value="o">Other</option>
+            </select>
+    </div>
+    <div class="ui-grid-a">
+    <input type="submit" value="sign up">
+    </div>
+</form>
+<div data-role="popup" id="popupBasic">
+  <p>Message</p>
+</div>
+<script src="public/js/signup.js" type="text/javascript"></script>
+<script src="public/js/pwstrength.js" type="text/javascript"></script>
