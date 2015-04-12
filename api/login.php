@@ -46,6 +46,35 @@ else{
 }
 /* check variables END*/
 
-//maak een nieuw user object
-$user = new user($db);
-echo json_encode($user->login($name, $password));
+
+
+$user = $em->find("User",$name);
+if(isset($user)){
+    if($user->checkpass($password)){
+        if($user->isVerified()){
+            $_SESSION['user']['name'] = $user->getNaam();
+            $return['type'] = 'succes';
+            $return['mess'] = 'logged in';
+            echo json_encode($return);
+            die();
+        }
+        else{
+            $return['type'] = 'fail';
+            $return['mess'] = 'not verified';
+            echo json_encode($return);
+            die();
+        }
+    }
+    else{
+        $return['type'] = 'fail';
+        $return['mess'] = 'wrong username or password';
+        echo json_encode($return);
+        die();
+    }
+}
+else{
+    $return['type'] = 'fail';
+    $return['mess'] = 'wrong username or password';
+    echo json_encode($return);
+    die();
+}

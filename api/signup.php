@@ -2,6 +2,7 @@
 
 set_include_path('../engine');
 require_once('config.php');
+require_once('sendmail.php');
 require_once('model/user.php');
 
 if(DEBUGMODE){
@@ -81,10 +82,10 @@ else{
 }
 
 if(isset($_POST['s']) && ( $_POST['s'] == "u" || $_POST['s'] == "f" || $_POST['s'] == "m" || $_POST['s'] == "o"  )){
-    $ign = htmlentities($_POST['s']);
+    $gender = htmlentities($_POST['s']);
 }
 else{
-    $ign = "u";
+    $gender = "u";
 }
 
 if($password1 !== $password2){
@@ -103,6 +104,26 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
     die();
 }
 
-$user = new User($db);
+$user = new User();
 
-echo json_encode($_POST);
+$user->setNaam($name);
+$user->newPass($password1);
+$user->setEmail($email);
+$user->setVerified(false);
+$user->setRol(0);
+$user->setGamenaam($ign);
+$user->setGeslacht($gender);
+$user->setGeboortedatum($birthday);
+$user->setLand($country);
+$user->setMail(false);
+
+$em->persist($user);
+$em->flush();
+
+$to = $user->getEmail();
+$mail['filename'] = 'confirm';
+$mail['fullName'] = $user->getNaam();
+$mail['email'] = $user->getEmail();
+$subject = 'thanks for your registration to Minespiration';
+
+sendMail($to, $mail, $subject);

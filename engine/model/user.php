@@ -25,7 +25,7 @@ class User{
      /** @Column(type="string", length=16) */
     private $gamenaam;
 
-    /** @Column(type="datetime") */
+    /** @Column(type="string") */
     private $geboortedatum;
 
      /** @Column(type="string", length=32) */
@@ -33,6 +33,10 @@ class User{
 
     /** @Column(type="boolean") */
     private $mail;
+
+    /** @Column(type="string", length=1) */
+    private $geslacht;
+
     private $subscribed;
     private $subsribers;
     private $albums;
@@ -49,7 +53,7 @@ class User{
         return $this->email;
     }
 
-    public function getVerified() {
+    public function isVerified() {
         return $this->verified;
     }
 
@@ -71,6 +75,15 @@ class User{
 
     public function getMail() {
         return $this->mail;
+    }
+
+    public function getGeslacht(){
+        return $this->geslacht;
+    }
+    
+    public function newPass($pass){
+        $this->salt = hash('crc32', date('U'));
+        $this->hashedpass = hash('sha512',$this->salt.$pass);
     }
 
     public function setNaam($naam) {
@@ -105,13 +118,12 @@ class User{
         $this->mail = $mail;
     }
 
+    public function setGeslacht($geslacht) {
+        $this->geslacht = $geslacht;
+    }
+
     public function checkPass($pass){
         return $this->hashedpass === hash('sha512',$this->salt.$pass);
-    }
-    
-    public function newPass($pass){
-        $this->salt = hash('crc32', date('u'));
-        $this->hashedpass = hash('sha512',$this->salt.$pass);
     }
 
 }
