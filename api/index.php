@@ -1,8 +1,6 @@
 <?php
 
-$return = array();
-$return['type'] = 'error';
-$return['errnr'] = '601';
-$return['error'] = 'no file chosen';
+include('../engine/config.php');
+require_once("../engine/model/user.php");
 
-echo json_encode($return);
+var_dump($em->find("User","test"));
